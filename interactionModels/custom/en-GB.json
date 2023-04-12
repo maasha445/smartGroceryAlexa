@@ -1,0 +1,265 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "smart grocery",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "checkInventory",
+          "slots": [
+            {
+              "name": "listType",
+              "type": "listType",
+              "samples": [
+                "i want to view {listType}",
+                "{listType}"
+              ]
+            }
+          ],
+          "samples": [
+            "{listType}",
+            "i want to view my {listType} ",
+            "i want to see the inventory ",
+            "can i view my inventory ",
+            "can i see whats left at home",
+            "what are the groceries left at home",
+            "can i check my inventory ",
+            "inventory ",
+            "i want to check my inventory "
+          ]
+        },
+        {
+          "name": "placeOrder",
+          "slots": [
+            {
+              "name": "quantity",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "item",
+              "type": "item"
+            }
+          ],
+          "samples": [
+            "i want {quantity} {item}",
+            "I would like to order {quantity} {item} ",
+            "I want to place an order for {quantity} {item}",
+            "Can I have {quantity} {item} delivered",
+            "I\u0027d like to get {quantity} {item}",
+            "I need to order {quantity} {item} please.",
+            "Can I place an order for {quantity} {item}",
+            "I want to order {quantity} {item}"
+          ]
+        },
+        {
+          "name": "cancelOrder",
+          "slots": [],
+          "samples": [
+            "cancel last order",
+            "cancel the last order ",
+            "i want to cancel the order ",
+            "can i cancel my last order please",
+            "i would like to cancel my last order",
+            "i want to cancel my last order",
+            "i want to cancel my order "
+          ]
+        },
+        {
+          "name": "nutritionalInfo",
+          "slots": [
+            {
+              "name": "itemName",
+              "type": "itemName"
+            }
+          ],
+          "samples": [
+            "tell me about {itemName}",
+            "can you tell me about {itemName}",
+            "what nutirions in {itemName}",
+            "I would like to know the nutritional information for {itemName}",
+            "Can you tell me the nutritional values of {itemName}",
+            "What\u0027s in {itemName}",
+            "What are the nutritional facts for {itemName}"
+          ]
+        },
+        {
+          "name": "recipeSuggetions",
+          "slots": [],
+          "samples": [
+            "i want to know what i can make today",
+            "can you give me some recipes",
+            "recipes",
+            "recipe suggestions please",
+            "what shall i make today ",
+            "what can i make today ",
+            "can i have some recipe suggestions"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "party grocery"
+              }
+            },
+            {
+              "name": {
+                "value": "regular grocery"
+              }
+            }
+          ],
+          "name": "listType"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "butter"
+              }
+            },
+            {
+              "name": {
+                "value": "egg"
+              }
+            },
+            {
+              "name": {
+                "value": "sugar"
+              }
+            },
+            {
+              "name": {
+                "value": "milk"
+              }
+            }
+          ],
+          "name": "item"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "ice cream"
+              }
+            },
+            {
+              "name": {
+                "value": "chocolate "
+              }
+            },
+            {
+              "name": {
+                "value": "milk"
+              }
+            },
+            {
+              "name": {
+                "value": "banana"
+              }
+            }
+          ],
+          "name": "itemName"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "checkInventory",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "listType",
+              "type": "listType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1592408104197.668479130703"
+              }
+            }
+          ]
+        },
+        {
+          "name": "placeOrder",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "quantity",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.949980982165.956357951870"
+              }
+            },
+            {
+              "name": "item",
+              "type": "item",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1592408104197.668479130703",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "what is the type of inventory you want to view "
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.949980982165.956357951870",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "what is the quantity you want "
+          }
+        ]
+      }
+    ]
+  },
+  "version": "9"
+}
